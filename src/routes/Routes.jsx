@@ -10,6 +10,8 @@ import BookDetails from "../pages/BookDetails.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
 import DashboardLayout from "../layout/DashboardLayout.jsx";
+import Profile from "../pages/Profile.jsx";
+import AllUsers from "../pages/AllUsers.jsx";
 
 const router = createBrowserRouter([
     {
@@ -51,9 +53,19 @@ const router = createBrowserRouter([
         {
           path:  '/dashboard',
           element: <DashboardLayout></DashboardLayout>,
-          children:[
-            // path: "",
-            // element:  
+          children: [
+            {
+              path: "",
+              element: <Profile />,
+            },
+            {
+              path: "allUsers",
+              element: <AllUsers />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
+            },
           ],
       },
     
