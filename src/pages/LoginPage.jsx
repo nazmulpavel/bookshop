@@ -19,7 +19,7 @@ export default function LoginPage() {
         event.preventDefault();
 
         const form = new FormData(event.currentTarget);
-        console.log(form);
+        // console.log(form);
 
         const email = form.get("email");
         const password = form.get("password");

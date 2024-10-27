@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/Authprovider'
+import { FaDashcube, FaDeviantart, FaEdit } from 'react-icons/fa';
+import { FaPersonRifle } from 'react-icons/fa6';
 
 export default function Navbar() {
   const { user, logOutUser } = useContext(AuthContext);
@@ -58,7 +60,7 @@ export default function Navbar() {
                 <img class="w-7 rounded-full" src={user?.photoURL} alt="" />
                 <span>{user?.displayName}</span>
 
-                <button onClick={handleLogOut} className="btn btn-outline  hover:bg-green-600 btn-success">Logout</button>
+                <Link to="/dashboard">  <button  className="btn btn-outline  hover:bg-green-600 btn-success"><FaEdit/>Dashboard</button></Link>
               </div>
             </>) : (<Link to="/login"> <a className="btn  hover:text-orange-700">LogIn</a> </Link>)
           }

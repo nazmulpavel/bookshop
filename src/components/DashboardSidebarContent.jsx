@@ -5,7 +5,9 @@ import {
   FaUsers,
   FaEnvelope,
   FaSignOutAlt,
+  FaClipboardList,
   FaPenAlt,
+  FaProductHunt,
 } from "react-icons/fa";
 import { AuthContext } from "../provider/Authprovider";
 
@@ -63,30 +65,30 @@ const DashboardSidebarContent = () => {
                   All Users
                 </NavLink>
                 <NavLink
-                  to="/dashboard/createMessage"
+                  to="/dashboard/allCategories"
                   className={({ isActive }) =>
                     isActive
                       ? "text-blue-600"
                       : "text-gray-600 hover:text-blue-500"
                   }
                 >
-                  <FaPenAlt className="inline mr-2" />
-                  Create Message
+                  <FaClipboardList className="inline mr-2" />
+                  All Categories
                 </NavLink>
               </>
             {/* )} */}
             {/* User Links */}
             {/* {!user?.isAdmin && ( */}
               <NavLink
-                to="/dashboard/messages"
+                to="/dashboard/allProducts"
                 className={({ isActive }) =>
                   isActive
                     ? "text-blue-600"
                     : "text-gray-600 hover:text-blue-500"
                 }
               >
-                <FaEnvelope className="inline mr-2" />
-                Messages
+                <FaProductHunt className="inline mr-2" />
+                All Products
               </NavLink>
             {/* )} */}
           </>
