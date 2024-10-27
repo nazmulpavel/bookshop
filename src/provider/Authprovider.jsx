@@ -33,6 +33,7 @@ export default function Authprovider({ children }) {
             displayName: name,
             photoUrl: photo,
             uid: newUSer.uid,
+            isAdmin: true,
           }
         )
       })

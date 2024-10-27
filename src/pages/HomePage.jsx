@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <>
             <Helmet>
-            <title>Boighor</title>
+            <title>BookMania</title>
         </Helmet>
     <div>
       <div className="carousel w-full h-96 scroll-auto">

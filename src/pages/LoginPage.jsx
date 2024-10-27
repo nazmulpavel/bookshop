@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../provider/Authprovider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
     const { loginWithGoogle, signIn } = useContext(AuthContext)
@@ -28,7 +29,10 @@ export default function LoginPage() {
         signIn(email, password)
             .then((result) => {
                 console.log(result.user);
-                navigate(location?.state ? location.state : "/");
+                toast.success('Log in successfull', {
+                    position: "top-right"
+                  })
+                navigate(location?.state ? location.state : "/dashboard");
             })
             .catch((error) => {
                 console.log(error);
@@ -38,9 +42,9 @@ export default function LoginPage() {
 
     return (
         <>
-        <Helmet>
-            <title>Boighor | Login</title>
-        </Helmet>
+            <Helmet>
+                <title>BookMania | Login</title>
+            </Helmet>
             <div>
                 <div className="hero bg-base-200 min-h-screen">
                     <div className="hero-content flex-col lg:flex-row-reverse">

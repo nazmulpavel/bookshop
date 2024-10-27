@@ -38,7 +38,7 @@ export default function Navbar() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <Link to="/"><a >Home</a></Link>
-              <Link to="/product"><a>Product</a></Link>
+              <Link to="/product"><a>All Product</a></Link>
             </ul>
           </div>
           <img className="w-10 rounded-full" src="icon.png" alt="logo  " />
@@ -48,9 +48,9 @@ export default function Navbar() {
 
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-2xl bold space-x-5  ">
+          <ul className="menu menu-horizontal px-1  space-x-5  ">
             <Link to="/" ><a className=" hover:text-orange-700">Home</a></Link>
-            <Link to="/product"><a className=" hover:text-orange-700">Products</a></Link>
+            <Link to="/product"><a className=" hover:text-orange-700">All Products</a></Link>
           </ul>
         </div>
         <div className="navbar-end gap-2">

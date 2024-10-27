@@ -48,7 +48,7 @@ export default function RegisterPage() {
   return (
     <>
             <Helmet>
-            <title>Boighor | Register</title>
+            <title>BookMania | Register</title>
         </Helmet>
     <div>
     <div className="hero bg-base-200 min-h-screen">

@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import DashboardSidebarContent from "../components/DashboardSidebarContent";
+import { Helmet } from "react-helmet";
 
 const DashboardLayout = () => {
   return (
+    
     <>
+                <Helmet>
+                <title>BookMania</title>
+            </Helmet>
       <div>
         <div className="shadow-md bg-slate-100">
           {/* <Navbar /> */}
