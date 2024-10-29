@@ -44,7 +44,7 @@ const AllUsers = () => {
       console.log({ updatedUser });
 
       await fetch(
-        `http://localhost:5001/userlist/${selectedUser._id}`,
+        `http://localhost:5001/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {

@@ -13,6 +13,9 @@ import DashboardLayout from "../layout/DashboardLayout.jsx";
 import Profile from "../pages/Profile.jsx";
 import AllUsers from "../pages/AllUsers.jsx";
 import AddProductPage from "../pages/AddProductPage.jsx";
+import AllCategory from "../pages/AddCategory.jsx";
+import AddCategory from "../pages/AddCategory.jsx";
+import CategoriesList from "../pages/CategoriesList.jsx";
 
 const router = createBrowserRouter([
     {
@@ -68,9 +71,16 @@ const router = createBrowserRouter([
               element: <Profile />,
             },
             {
-              path:"allCategories",
-              element: <AddProductPage/>,
-            }
+              path:"addCategory",
+              element: <AddCategory/>,
+            },
+            {
+              path:"categoriesList",
+              element: <CategoriesList/>,
+              loader: () => fetch("http://localhost:5001/categories"),
+
+            },
+            
           ],
       },
     
