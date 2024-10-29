@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../provider/Authprovider'
 import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
 
 
 export default function RegisterPage() {
@@ -19,25 +20,32 @@ export default function RegisterPage() {
         const photo = form.get("photo");
         const email = form.get("email");
         const password = form.get("password");
+        const isAdmin = false;
+        const isBlock = false;
         console.log(name,photo,email,password);
     
 
-        createUser(email,password,name,photo).then((result)=>{
+        createUser(email,password,name,photo,isAdmin,isBlock).then((result)=>{
             console.log("yyyyyy",result.user);
-            handleUserProfile(name, photo);
+
+            // window.location.reload();
+             handleUserProfile(name, photo);
             navigate("/");
         }).catch((error)=>{
             console.log(error);
-
+            toast.error(error);
         });
 
-        const handleUserProfile = (name, photo) => {
+        const handleUserProfile = async(name, photo) => {
             const profile = { displayName: name, photoURL: photo };
         
-            updateUserProfile(profile)
+            await  updateUserProfile(profile)
               .then(() => {
                 console.log("pppppppp");
-                // navigate("/login");
+                 window.location.reload();
+
+                navigate("/");
+
               })
               .catch((error) => {
                 console.log(error);

@@ -15,7 +15,7 @@ export default function Authprovider({ children }) {
   const [user, SetUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const createUser = async (email, password, name, photo) => {
+  const createUser = async (email, password, name, photo, isAdmin, isBlocked) => {
     setLoading(true);
 
     try {
@@ -33,15 +33,17 @@ export default function Authprovider({ children }) {
             displayName: name,
             photoUrl: photo,
             uid: newUSer.uid,
-            isAdmin: true,
+            isAdmin: isAdmin,
+            isBlocked: isBlocked,
           }
         )
       })
       console.log(response);
+      return userCredential;
     } catch (error) {
       console.error(error);
     }
-    return userCredential;
+    // return userCredential;
 
   }
 

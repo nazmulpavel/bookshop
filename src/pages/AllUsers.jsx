@@ -20,7 +20,7 @@ const AllUsers = () => {
   const fetchUsers = async () => {
     try {
       const response = await fetch(
-        "https://the-master-full-stack-project-server.vercel.app/users"
+        "http://localhost:5001/userlist"
       );
       const data = await response.json();
       setUsers(data);
@@ -44,7 +44,7 @@ const AllUsers = () => {
       console.log({ updatedUser });
 
       await fetch(
-        `https://the-master-full-stack-project-server.vercel.app/user/${selectedUser._id}`,
+        `http://localhost:5001/userlist/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -67,7 +67,7 @@ const AllUsers = () => {
       const updatedUser = { ...selectedUser, isAdmin: !selectedUser?.isAdmin };
 
       await fetch(
-        `https://the-master-full-stack-project-server.vercel.app/user/${selectedUser._id}`,
+        `http://localhost:5001/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -85,6 +85,7 @@ const AllUsers = () => {
 
   // Open the edit modal with the user's current details
   const openEditModal = (user) => {
+    console.log("user uid value",user);
     setSelectedUser(user);
     setFormData({
       displayName: user.displayName || "",
@@ -95,7 +96,7 @@ const AllUsers = () => {
     setIsEditModalOpen(true);
   };
 
-  // Update user info
+//   Update user info
   const handleUpdate = async () => {
     try {
       const updatedUser = {
@@ -107,7 +108,7 @@ const AllUsers = () => {
       };
 
       await fetch(
-        `https://the-master-full-stack-project-server.vercel.app/user/${selectedUser._id}`,
+        `http://localhost:5001/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -123,6 +124,7 @@ const AllUsers = () => {
     }
   };
 
+   
   const handleClickedSetBlock = (user) => {
     setSelectedUser(user);
     setIsBlockModalOpen(true);
@@ -217,7 +219,7 @@ const AllUsers = () => {
               <input
                 type="text"
                 className="w-full p-2 border rounded"
-                value={formData.name}
+                defaultValue={selectedUser?.displayName}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
@@ -228,7 +230,7 @@ const AllUsers = () => {
               <input
                 type="text"
                 className="w-full p-2 border rounded"
-                value={formData.phone}
+                defaultValue={selectedUser?.phone}
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
                 }
@@ -239,7 +241,7 @@ const AllUsers = () => {
               <input
                 type="text"
                 className="w-full p-2 border rounded"
-                value={formData.photoURL}
+                defaultValue={selectedUser?.photoUrl}
                 onChange={(e) =>
                   setFormData({ ...formData, photoUrl: e.target.value })
                 }
@@ -250,7 +252,7 @@ const AllUsers = () => {
               <input
                 type="text"
                 className="w-full p-2 border rounded"
-                value={formData.address}
+                defaultValue={selectedUser?.address}
                 onChange={(e) =>
                   setFormData({ ...formData, address: e.target.value })
                 }

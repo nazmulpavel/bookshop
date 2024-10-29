@@ -79,7 +79,7 @@ const DashboardSidebarContent = () => {
                     {/* User Links */}
                     {/* {!user?.isAdmin && ( */}
                     <NavLink
-                        to="/dashboard/allProducts"
+                        to="/dashboard/allCategories"
                         className={({ isActive }) =>
                             isActive
                                 ? "text-blue-600"

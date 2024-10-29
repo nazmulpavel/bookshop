@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Profile = () => {
 
   const { user } = useContext(AuthContext);
+
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     displayName: "",

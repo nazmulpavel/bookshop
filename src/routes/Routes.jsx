@@ -12,6 +12,7 @@ import RegisterPage from "../pages/RegisterPage.jsx";
 import DashboardLayout from "../layout/DashboardLayout.jsx";
 import Profile from "../pages/Profile.jsx";
 import AllUsers from "../pages/AllUsers.jsx";
+import AddProductPage from "../pages/AddProductPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
               path: "profile",
               element: <Profile />,
             },
+            {
+              path:"allCategories",
+              element: <AddProductPage/>,
+            }
           ],
       },
     
