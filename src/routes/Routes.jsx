@@ -16,6 +16,8 @@ import AddProductPage from "../pages/AddProductPage.jsx";
 import AllCategory from "../pages/AddCategory.jsx";
 import AddCategory from "../pages/AddCategory.jsx";
 import CategoriesList from "../pages/CategoriesList.jsx";
+import AddewProduct from "../pages/AddewProduct.jsx";
+import ProductsList from "../pages/ProductsList.jsx";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <HomePage />,
+          loader: () => fetch("http://localhost:5001/categories"),
         },
         {
             path: "/public",
@@ -79,6 +82,15 @@ const router = createBrowserRouter([
               element: <CategoriesList/>,
               loader: () => fetch("http://localhost:5001/categories"),
 
+            },
+            {
+              path:"productsList",
+              element: <ProductsList/>,
+              loader: () => fetch("http://localhost:5001/products"),
+            },
+            {
+              path:"addNewProduct",
+              element: <AddewProduct/>,
             },
             
           ],

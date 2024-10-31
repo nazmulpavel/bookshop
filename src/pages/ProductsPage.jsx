@@ -6,8 +6,10 @@ export default function ProductsPage() {
   const navigate = useNavigate();
   const user = useLoaderData();
 
+  
+
   useEffect(() => {
-    fetch(`https://boighorbackend.vercel.app/books`).
+    fetch(`http://localhost:5001/products/`).
       then((res) => res.json()).
       then((data) => setBooks(data))
   }, [])
@@ -18,9 +20,9 @@ export default function ProductsPage() {
 
   const handleClick = (book) => {
       const { } = book;
-      console.log("book name", book.bookName);
+      console.log("book name", book.name);
 
-      const url = '/bookdetails/' + book.bookId;
+      const url = '/bookdetails/' + book._id;
       console.log("ooooo",url)
       navigate(url, { state: { item: book}});
 
@@ -32,6 +34,9 @@ export default function ProductsPage() {
       {/* <hr /> */}
 
       {books.map((book) => {
+        const pageNumber = Math.floor(Math.random() * 100) + 200;
+        const yearNumber = Math.floor(Math.random() * 100) + 1924;
+
         return (
           <div className="grid grid-cols-2 items-center" key={book.id}>
             {/* <p>Book  Name: {book.bookName}</p>
@@ -39,18 +44,17 @@ export default function ProductsPage() {
             <div className="card bg-base-100 w-96 shadow-xl mt-2">
               <figure>
                 <img
-                  src={book.image}
-                  alt={book.bookName} />
+                  src={book.imageUrl}
+                  alt={book.name} />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">
-                  {book.bookName}
-                  <div className="badge badge-secondary">{book.rating}</div>
+                  {book.name}
                 </h2>
-                <p>{book.review}</p>
+                <p className="badge badge-secondary">Rating: {book.rating}</p>
                 <div className="card-actions justify-centre">
-                  <div className="badge badge-outline font-bold">Total Pages: {book.totalPages}</div>
-                  <div className="badge badge-outline font-bold ">Published: {book.yearOfPublishing}</div>
+                  <div className="badge badge-outline font-bold">Total Pages: {pageNumber}                  </div>
+                  <div className="badge badge-outline font-bold ">Published: {yearNumber}</div>
 
                 </div>
               </div>

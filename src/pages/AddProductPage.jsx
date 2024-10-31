@@ -18,15 +18,17 @@ const AddProductPage = () => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     // useTitle('Add Product');
-    const imageHostKey = "ffsjkfhsfjkhfh";
+    const imageHostKey = "5317ebf3934bee23eae952d4f7eacf23";
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await fetch('https://localhost:5001/userlist');
+                const res = await fetch('http://localhost:5001/categories');
                 const data = await res.json();
                 setCategories(data);
 
+                // Create category object after fetching categories
+                // as we need to insert category._id while adding product into DB.
                 const tempCategoryObject = {};
                 data.forEach(category => {
                     tempCategoryObject[category.name] = category._id;

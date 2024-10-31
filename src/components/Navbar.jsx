@@ -1,20 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/Authprovider'
-import { FaDashcube, FaDeviantart, FaEdit } from 'react-icons/fa';
+import { FaDashcube, FaDeviantart, FaEdit, FaToggleOn } from 'react-icons/fa';
 import { FaPersonRifle } from 'react-icons/fa6';
 
 export default function Navbar() {
   const { user, logOutUser } = useContext(AuthContext);
+  const [theme, setTheme] = useState('light'); // Initial theme
+
   console.log(user);
   const navigate = useNavigate();
   const handleLogOut = () => {
     logOutUser().then((res) => {
       navigate("/");
     });
-
-
   }
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme); // Set data-theme attribute
+};
+
+
   return (
     <div >
       <div className="navbar bg-emerald-200">
@@ -57,9 +64,13 @@ export default function Navbar() {
           {
             user ? (<>
               <div class="flex items-center gap-3">
-                <img class="w-7 rounded-full" src={user?.photoURL} alt="" />
+                <img class="w-7 rounded-full" src={user?.photoUrl} alt="" />
                 <span>{user?.displayName}</span>
-
+                <span>     
+                <button onClick={toggleTheme}  className="btn btn-outline  hover:bg-green-600 btn-success"><FaToggleOn/>{
+ theme === 'light' ? 'Dark' : 'Light'
+                }</button>           
+                </span>
                 <Link to="/dashboard">  <button  className="btn btn-outline  hover:bg-green-600 btn-success"><FaEdit/>Dashboard</button></Link>
               </div>
             </>) : (<Link to="/login"> <a className="btn  hover:text-orange-700">LogIn</a> </Link>)
