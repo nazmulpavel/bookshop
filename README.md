@@ -1,6 +1,6 @@
-Server side code link: https://github.com/devalienbrain/the-master-full-stack-project-client
-Client side Live deploy (Vercel) Link: [https://the-master-full-stack-project-client.vercel.app/
-](https://github.com/devalienbrain/the-master-full-stack-project-client)
+Server side code link: https://github.com/nazmulpavel/bookshopbackend
+Client side Live deploy (netlify) Link: [https://bookmania24.netlify.app/
+](https://github.com/nazmulpavel/bookshop)
 
 BookMania
 This is a full-stack book shop  where users can register, log in, view and update their profiles, and where admins can manage users' roles and statuses.
