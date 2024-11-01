@@ -1,43 +1,65 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { Helmet } from 'react-helmet'
 import Faq from './Faq'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../provider/Authprovider'
 
 export default function HomePage() {
   const navigate = useNavigate();
-  // const user = useLoaderData();
 
-  const loadedCategories = useLoaderData();
+  const [categories, setCategories] = useState([]);
 
-  const [category, setCategory] = useState(loadedCategories);
-console.log("home page",loadedCategories.count);
-//   useEffect(() => {
-//     const fetchCategories = async () => {
-//         try {
-//             const res = await fetch('http://localhost:5001/categories');
-//             const data = await res.json();
-//         console.log("categories are", data.count);
-//         console.log(data);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // const prodUrl = "http://localhost:5001/categories";
+        const response = await fetch("http://localhost:5001/categories");
+        if (!response.ok) {
+          // throw new Error(HTTP error! Status: ${ response.status });
+        }
+        const data = await response.json();
+        setCategories(data);
+        console.log("categories are", data.size);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        // Handle error state (optional)
+        setCategories([]);
+        // setLoading(false);
+      } finally {
+        // setLoading(false); // Ensure loading is set to false even in case of error
+      }
+    };
 
-//             // Create category object after fetching categories
-//             // as we need to insert category._id while adding product into DB.
-//             const tempCategoryObject = {};
-//             data.forEach(category => {
-//                 tempCategoryObject[category.name] = category._id;
-//                 console.log(category.name);
-//             });
-//             // setCategoryObject(tempCategoryObject);
-//              setCategory([data]);
+    fetchCategories();
+  }, []);
 
-//         } catch (error) {
-//             console.error('Error fetching categories:', error);
-//         }
-//     };
+  const viewCategoryProduct = (id) => {
+    console.log("categoryID", id)
+    const url = 'product/categoryid/' + id;
+    console.log("caturl", url)
+    navigate(url, { state: { catId: id } });
+  }
 
-//     fetchCategories();
-// }, []);
+
+  //   useEffect(() => {
+  //     const fetchCategories = async () => {
+  //         try {
+  //             const res = await fetch('http://localhost:5001/categories');
+  //             const data = await res.json();
+  //             console.log("categories are", data.size);
+  //              console.log(data);
+  //              setCategories(data);
+
+  //         } catch (error) {
+  //             console.error('Error fetching categories:', error);
+  //         }
+  //     };
+
+  //     fetchCategories();
+  // }, []);
 
 
 
@@ -49,7 +71,7 @@ console.log("home page",loadedCategories.count);
       <Helmet>
         <title>BookMania</title>
       </Helmet>
-      <div >
+      <div  >
         <div className="carousel w-full h-96 scroll-auto">
           <div id="slide1" className="carousel-item relative w-full">
             <img
@@ -124,24 +146,34 @@ console.log("home page",loadedCategories.count);
         <hr />
         <hr />
         <br />
-        {/* category */}
-        {/* {loadedCategories.map((cat) => { */}
-          <div className="card bg-base-100 w-96 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes"
-                className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
+        <div className="grid lg:grid-cols-3 sm: grid-cols-1  md:grid-cols-2 gap-5" >
+        {categories.map((cat, index) => {
+          return (
+            <div className="grid lg:grid-cols-3 sm: grid-cols-1  md:grid-cols-2 gap-5">
+              <div className="card bg-base-100 w-96 shadow-xl">
+                <figure className="px-10 pt-10">
+                  <img
+                    src={cat.imageUrl}
+                    alt={cat.name}
+                    className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">{cat.name}</h2>
+                  <p>
+
+                  </p>
+                  <div className="card-actions">
+                    <button onClick={() => viewCategoryProduct(cat._id)} className="btn btn-primary">View Products</button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          {/* })}  */}
+
+          );
+
+        })}
+</div>
+
 
 
         <br /> <hr />

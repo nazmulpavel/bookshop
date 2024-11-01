@@ -14,6 +14,7 @@ export default function Authprovider({ children }) {
   const auth = getAuth(app);
   const [user, SetUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState([]);
 
   const createUser = async (email, password, name, photo, isAdmin, isBlocked) => {
     setLoading(true);
@@ -54,6 +55,10 @@ export default function Authprovider({ children }) {
   const logOutUser = () => {
     setLoading(true);
     return signOut(auth);
+  };
+  const loadCategories = () => {
+    setLoading(true);
+    return loadCategories(auth);
   };
   const updateUserProfile = (profile) => {
     setLoading(true);
@@ -96,6 +101,8 @@ export default function Authprovider({ children }) {
       unsubscribe();
     }
   }, [auth]);
+ 
+
   return (
     <>
       <AuthContext.Provider value={{ loginWithGoogle, user, signIn, loading, createUser, updateUserProfile, logOutUser }}>{children}</AuthContext.Provider>

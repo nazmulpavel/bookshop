@@ -19,7 +19,7 @@ export default function Navbar() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme); // Set data-theme attribute
-};
+  };
 
 
   return (
@@ -66,12 +66,12 @@ export default function Navbar() {
               <div class="flex items-center gap-3">
                 <img class="w-7 rounded-full" src={user?.photoUrl} alt="" />
                 <span>{user?.displayName}</span>
-                <span>     
-                <button onClick={toggleTheme}  className="btn btn-outline  hover:bg-green-600 btn-success"><FaToggleOn/>{
- theme === 'light' ? 'Dark' : 'Light'
-                }</button>           
+                <span>
+                  <button onClick={toggleTheme} className="btn btn-outline  hover:bg-green-600 btn-success"><FaToggleOn />{
+                    theme === 'light' ? 'Dark' : 'Light'
+                  }</button>
                 </span>
-                <Link to="/dashboard">  <button  className="btn btn-outline  hover:bg-green-600 btn-success"><FaEdit/>Dashboard</button></Link>
+                <Link to="/dashboard">  <button className="btn btn-outline  hover:bg-green-600 btn-success"><FaEdit />Dashboard</button></Link>
               </div>
             </>) : (<Link to="/login"> <a className="btn  hover:text-orange-700">LogIn</a> </Link>)
           }

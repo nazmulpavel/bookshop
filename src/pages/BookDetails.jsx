@@ -9,6 +9,7 @@ export default function BookDetails() {
     const location = useLocation();
 
     const { item } = location.state || {};
+    console.log("item is--",item);
     const pageNumber = Math.floor(Math.random() * 100) + 200;
     const yearNumber = Math.floor(Math.random() * 100) + 1924;
 

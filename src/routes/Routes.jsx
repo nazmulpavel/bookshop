@@ -18,6 +18,7 @@ import AddCategory from "../pages/AddCategory.jsx";
 import CategoriesList from "../pages/CategoriesList.jsx";
 import AddewProduct from "../pages/AddewProduct.jsx";
 import ProductsList from "../pages/ProductsList.jsx";
+import CategoryBasedProduct from "../pages/CategoryBasedProduct.jsx";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <HomePage />,
-          loader: () => fetch("http://localhost:5001/categories"),
+          // loader: () => fetch("http://localhost:5001/categories"),
         },
         {
             path: "/public",
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             path: '/bookdetails/:bookId',
             element: <BookDetails/>,
         },
+        {
+          path: '/product/categoryid/:catid',
+          element: <CategoryBasedProduct/>,
+      },
           {
             path:  '/*',
             element: <ErrorPage/>,
