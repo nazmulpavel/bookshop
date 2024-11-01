@@ -9,7 +9,7 @@ export default function ProductsPage() {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5001/products/`).
+    fetch(`https://bookshopbackend-kk5q.onrender.com/products/`).
       then((res) => res.json()).
       then((data) => setBooks(data))
   }, [])

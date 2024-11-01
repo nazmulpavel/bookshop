@@ -15,14 +15,13 @@ export default function HomePage() {
     const fetchCategories = async () => {
       try {
         // const prodUrl = "http://localhost:5001/categories";
-        const response = await fetch("http://localhost:5001/categories");
+        const response = await fetch("https://bookshopbackend-kk5q.onrender.com/categories");
         if (!response.ok) {
           // throw new Error(HTTP error! Status: ${ response.status });
         }
         const data = await response.json();
         setCategories(data);
-        console.log("categories are", data.size);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error("Error fetching products:", error);
         // Handle error state (optional)
@@ -37,9 +36,9 @@ export default function HomePage() {
   }, []);
 
   const viewCategoryProduct = (id) => {
-    console.log("categoryID", id)
+    // console.log("categoryID", id)
     const url = 'product/categoryid/' + id;
-    console.log("caturl", url)
+    // console.log("caturl", url)
     navigate(url, { state: { catId: id } });
   }
 

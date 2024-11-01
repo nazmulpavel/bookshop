@@ -29,7 +29,7 @@ const Profile = () => {
 
       // Make API call to update user information
       const response = await fetch(
-        `http://localhost:5001/user/${user._id}`,
+        `https://bookshopbackend-kk5q.onrender.com/user/${user._id}`,
         {
           method: "PUT",
           headers: {

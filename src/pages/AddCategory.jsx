@@ -13,9 +13,9 @@ export default function AddCategory() {
     const imageUrl = form.get("image-url");
 
     const category = { name, imageUrl };
-    console.log(category);
+    // console.log(category);
 
-    fetch("http://localhost:5001/addCategory", {
+    fetch("https://bookshopbackend-kk5q.onrender.com/addCategory", {
       method: "POST",
       headers: {
         "content-type": "application/json",

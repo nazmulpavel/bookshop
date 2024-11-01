@@ -21,9 +21,9 @@ export default function Authprovider({ children }) {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(userCredential.user);
+      // console.log(userCredential.user);
       const newUSer = userCredential.user;
-      const response = await fetch("http://localhost:5001/userList", {
+      const response = await fetch("https://bookshopbackend-kk5q.onrender.com/userList", {
         method: "POST",
         headers: {
           "Content-Type": "Application/json",
@@ -39,7 +39,7 @@ export default function Authprovider({ children }) {
           }
         )
       })
-      console.log(response);
+      // console.log(response);
       return userCredential;
     } catch (error) {
       console.error(error);
@@ -73,7 +73,7 @@ export default function Authprovider({ children }) {
         if (currentUser) {
           try {
             const res = await fetch(
-              `http://localhost:5001/userlist/${currentUser.uid}`
+              `https://bookshopbackend-kk5q.onrender.com/userlist/${currentUser.uid}`
             );
 
             if (!res.ok) {

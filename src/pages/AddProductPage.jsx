@@ -23,7 +23,7 @@ const AddProductPage = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await fetch('http://localhost:5001/categories');
+                const res = await fetch('https://bookshopbackend-kk5q.onrender.com/categories');
                 const data = await res.json();
                 setCategories(data);
 
@@ -100,7 +100,7 @@ const AddProductPage = () => {
                 };
 
                 // Save product information to the database
-                const result = await fetch('https://localhost:5000/products', {
+                const result = await fetch('https://bookshopbackend-kk5q.onrender.com/products', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

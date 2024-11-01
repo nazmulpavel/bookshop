@@ -15,14 +15,9 @@ const AddewProduct = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('http://localhost:5001/categories');
+        const res = await fetch('https://bookshopbackend-kk5q.onrender.com/categories');
         const data = await res.json();
         setCategories(data);
-
-        // Create category object after fetching categories
-        // as we need to insert category._id while adding product into DB.
-        console.log("categories", categories);
-        console.log("data", data);
 
         const tempCategoryObject = {};
         data.forEach(category => {
@@ -51,13 +46,13 @@ const AddewProduct = () => {
     const rating = form.get("rating");
     const categoryId = categoryObject[category];
 
-    const product ={name, imageUrl, price, rating, categoryId};
-    console.log("product info",product);
+    const product = { name, imageUrl, price, rating, categoryId };
+    // console.log("product info", product);
     event.target.reset();
     setRating('');
 
-    
-    fetch("http://localhost:5001/addProduct", {
+
+    fetch("https://bookshopbackend-kk5q.onrender.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -75,7 +70,7 @@ const AddewProduct = () => {
         event.target.reset();
       });
   };
-   
+
 
 
 
@@ -94,7 +89,7 @@ const AddewProduct = () => {
               Add new Product
             </h1>
             &nbsp;&nbsp;&nbsp;
-            <Link to="/dashboard/productsList">      
+            <Link to="/dashboard/productsList">
 
               <button
                 className="bg-transparent w-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white 

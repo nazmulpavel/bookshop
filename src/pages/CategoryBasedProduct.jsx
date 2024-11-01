@@ -11,21 +11,20 @@ export default function CategoryBasedProduct() {
   console.log("catId is--",catId);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/category/products/${catId}`).
+    fetch(`https://bookshopbackend-kk5q.onrender.com/category/products/${catId}`).
       then((res) => res.json()).
       then((data) => setBooks(data))
   }, [])
 
-  console.log(books)
+//   console.log(books)
 
 
 
   const handleClick = (book) => {
       const { } = book;
-      console.log("book name", book.name);
+    //   console.log("book name", book.name);
 
       const url = '/bookdetails/' + book._id;
-      console.log("ooooo",url)
       navigate(url, { state: { item: book}});
 
   };

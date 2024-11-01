@@ -28,7 +28,6 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <HomePage />,
-          // loader: () => fetch("http://localhost:5001/categories"),
         },
         {
             path: "/public",
@@ -85,13 +84,13 @@ const router = createBrowserRouter([
             {
               path:"categoriesList",
               element: <CategoriesList/>,
-              loader: () => fetch("http://localhost:5001/categories"),
+              loader: () => fetch("https://bookshopbackend-kk5q.onrender.com/categories"),
 
             },
             {
               path:"productsList",
               element: <ProductsList/>,
-              loader: () => fetch("http://localhost:5001/products"),
+              loader: () => fetch("https://bookshopbackend-kk5q.onrender.com/products"),
             },
             {
               path:"addNewProduct",

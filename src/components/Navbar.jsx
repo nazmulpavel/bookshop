@@ -8,7 +8,7 @@ export default function Navbar() {
   const { user, logOutUser } = useContext(AuthContext);
   const [theme, setTheme] = useState('light'); // Initial theme
 
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   const handleLogOut = () => {
     logOutUser().then((res) => {

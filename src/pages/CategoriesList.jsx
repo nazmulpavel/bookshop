@@ -10,12 +10,12 @@ export default function CategoriesList() {
 
     const handleDelete = (_id) => {
         console.log(_id);
-        fetch(`http://localhost:5001/category/${_id}`, {
+        fetch(`https://bookshopbackend-kk5q.onrender.com/category/${_id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 if (data.deletedCount) {
                     toast.success("Category Deleted Successfully", {
                         position: "top-right",

@@ -24,18 +24,17 @@ export default function LoginPage() {
 
         const email = form.get("email");
         const password = form.get("password");
-        console.log(email, password);
+        // console.log(email, password);
 
         signIn(email, password)
             .then((result) => {
-                console.log(result.user);
                 toast.success('Log in successfull', {
                     position: "top-right"
                   })
                 navigate(location?.state ? location.state : "/dashboard");
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
             });
     };
 

@@ -11,7 +11,7 @@ export default function RegisterPage() {
     const navigate = useNavigate();
 
     const handleRegister = (event) =>{
-        console.log("name");
+        // console.log("name");
         event.preventDefault();
 
         const form = new FormData(event.currentTarget);
@@ -22,7 +22,7 @@ export default function RegisterPage() {
         const password = form.get("password");
         const isAdmin = false;
         const isBlock = false;
-        console.log(name,photo,email,password);
+        // console.log(name,photo,email,password);
     
 
         createUser(email,password,name,photo,isAdmin,isBlock).then((result)=>{
@@ -32,7 +32,7 @@ export default function RegisterPage() {
              handleUserProfile(name, photo);
             navigate("/");
         }).catch((error)=>{
-            console.log(error);
+            // console.log(error);
             toast.error(error);
         });
 

@@ -20,7 +20,7 @@ const AllUsers = () => {
   const fetchUsers = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5001/userlist"
+        "https://bookshopbackend-kk5q.onrender.com/userlist"
       );
       const data = await response.json();
       setUsers(data);
@@ -36,15 +36,15 @@ const AllUsers = () => {
   // Block a user
   const handleBlock = async () => {
     try {
-      console.log({ selectedUser });
+      // console.log({ selectedUser });
       const updatedUser = {
         ...selectedUser,
         isBlocked: !selectedUser?.isBlocked,
       };
-      console.log({ updatedUser });
+      // console.log({ updatedUser });
 
       await fetch(
-        `http://localhost:5001/user/${selectedUser._id}`,
+        `https://bookshopbackend-kk5q.onrender.com/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -63,11 +63,14 @@ const AllUsers = () => {
   // Toggle admin status
   const handleToggleAdmin = async () => {
     try {
-      console.log({ selectedUser });
-      const updatedUser = { ...selectedUser, isAdmin: !selectedUser?.isAdmin };
+      // console.log({ selectedUser });
+      const updatedUser = {
+         ...selectedUser,
+         isAdmin: !selectedUser?.isAdmin };
+      // console.log({ updatedUser });
 
       await fetch(
-        `http://localhost:5001/user/${selectedUser._id}`,
+        `https://bookshopbackend-kk5q.onrender.com/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -108,7 +111,7 @@ const AllUsers = () => {
       };
 
       await fetch(
-        `http://localhost:5001/user/${selectedUser._id}`,
+        `https://bookshopbackend-kk5q.onrender.com/user/${selectedUser._id}`,
         {
           method: "PUT",
           headers: {

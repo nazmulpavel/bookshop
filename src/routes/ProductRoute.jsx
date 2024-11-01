@@ -11,7 +11,6 @@ export default function ProductRoute({children}) {
     return children;
 
   }
-    console.log("ollll");
     // return navigate("/login");
 
     return <Navigate state={location.pathname} to="/login"></Navigate>

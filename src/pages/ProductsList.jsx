@@ -10,7 +10,7 @@ export default function ProductsList() {
 
     const handleDelete = (_id) => {
         console.log(_id);
-        fetch(`http://localhost:5001/product/${_id}`, {
+        fetch(`https://bookshopbackend-kk5q.onrender.com/product/${_id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
@@ -22,7 +22,7 @@ export default function ProductsList() {
                     });
 
                     const remainingProducts = products.filter((product) => product._id !== _id);
-                    console.log("Remaing", remainingProducts);
+                    // console.log("Remaing", remainingProducts);
 
                     setProducts(remainingProducts);
                     window.location.reload();
