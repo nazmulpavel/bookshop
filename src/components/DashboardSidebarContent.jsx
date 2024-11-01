@@ -77,7 +77,7 @@ const DashboardSidebarContent = () => {
                 )}
                     {/* )} */}
                     {/* User Links */}
-                    {/* {!user?.isAdmin && ( */}
+                    {user?.isAdmin && (
                     <NavLink
                         to="/dashboard/productsList"
                         className={({ isActive }) =>
@@ -89,7 +89,7 @@ const DashboardSidebarContent = () => {
                         <FaProductHunt className="inline mr-2" />
                         All Products
                     </NavLink>
-                    {/* )} */}
+                     )} 
                 </>
                 {/* // )} */}
                 {/* Logout */}

@@ -75,7 +75,7 @@ export default function LoginPage() {
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Login</button>
                                 </div>
-                                <button onClick={handleGoogleLogIn} class="card-body" className="btn btn-secondary">login with Google</button>
+                                {/* <button onClick={handleGoogleLogIn} class="card-body" className="btn btn-secondary">login with Google</button> */}
                                 <div className="">
                                     Don't have an Account?
                                     <Link className="text-blue-500 underline hover:text-blue-600" to="/register">Register Here </Link>
